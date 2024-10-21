@@ -1,0 +1,30 @@
+{% extends "template.html" %}
+
+{% block title %} Database Example{% endblock %}
+
+{% block content1 %}
+
+{{weather}}
+<br><br> 
+<form action="/localweather/" method="post">
+{% csrf_token %}
+{{ form }}
+<input type="submit" value="Submit">
+</form>
+
+
+<!--
+{% for x in weather %}
+{{x.id}} {{x.location}} {{x.windspeed}} <br>
+{% endfor %}
+
+
+{% for x in currentConditions %}
+{{x.id}} {{x.zipcode}} {{x.temperature}} {{x.windspeed}} <br>
+{% endfor %}
+-->
+
+
+{% endblock %}
+
+{% block footer%} index footer{% endblock %}

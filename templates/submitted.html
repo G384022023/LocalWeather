@@ -1,0 +1,32 @@
+{% extends "template.html" %}
+
+{% block title %} Index page {% endblock %}
+
+{% block content1 %}
+<h1> Weather List Table </h1>
+<table class="table">
+    <tr><th>Key</th><th>Zip Code</th><th>Temperature</th><th>Wind</th></tr>
+    {% for x in currentConditions %}
+    <tr><td>{{x.id}}</td><td>{{x.zipcode}}</td><td>{{x.temperature}}</td><td>{{x.windspeed}}</td></tr>
+    {% endfor %}
+</table>
+
+<form action="/localweather/" method="post">
+    {% csrf_token %} 
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+<br><br>
+
+<form style="border:4px solid black; padding:10px;">
+    {% for field in form2 %}
+    <div style="border:4px solid red; padding:10px; margin: 10px;">{{field.as_field_group}}</div>
+    {% endfor %}
+    <input type="submit" value="Submit">
+</form>
+
+{% endblock %}
+
+{% block footer %} index footer {% endblock %}
+
+
